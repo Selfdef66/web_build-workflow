@@ -6,7 +6,7 @@
     "content": "/content/mdr/overview.md",
     "icon": "design",
     "lastUpdated": "2026-07-21",
-    "keywords": ["设计评审", "市场需求", "产品定义", "设计规范"]
+    "keywords": ["设计评审", "市场需求", "产品定义", "设计规范", "MDR"]
   },
   "pdr": {
     "id": "pdr",
@@ -15,7 +15,7 @@
     "content": "/content/pdr/overview.md",
     "icon": "prototype",
     "lastUpdated": "2026-07-21",
-    "keywords": ["原型评审", "功能验证", "原型测试", "用户体验"]
+    "keywords": ["原型评审", "功能验证", "原型测试", "用户体验", "PDR"]
   },
   "hdr": {
     "id": "hdr",
@@ -24,6 +24,6 @@
     "content": "/content/hdr/overview.md",
     "icon": "hardware",
     "lastUpdated": "2026-07-21",
-    "keywords": ["硬件评审", "电路设计", "PCB", "BOM", "硬件测试"]
+    "keywords": ["硬件评审", "电路设计", "PCB", "BOM", "硬件测试", "HDR"]
   }
 }

@@ -1,13 +1,9 @@
-/**
- * 搜索功能
- * 全文搜索所有 Markdown 文档
- */
-
 (function() {
   let searchIndex = [];
-  let searchModal, searchInput, searchResults;
+  let searchModal;
+  let searchInput;
+  let searchResults;
 
-  // 初始化搜索
   function initSearch() {
     searchModal = document.getElementById('searchModal');
     searchInput = document.getElementById('searchInput');
@@ -15,47 +11,37 @@
 
     if (!searchModal || !searchInput || !searchResults) return;
 
-    // 绑定事件
     const searchBtn = document.getElementById('searchBtn');
     if (searchBtn) {
       searchBtn.addEventListener('click', openSearch);
     }
 
-    // 键盘快捷键
     document.addEventListener('keydown', function(e) {
-      // Ctrl/Cmd + K 打开搜索
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         openSearch();
       }
-      // ESC 关闭搜索
+
       if (e.key === 'Escape' && searchModal.classList.contains('active')) {
         closeSearch();
       }
     });
 
-    // 点击背景关闭
     searchModal.addEventListener('click', function(e) {
       if (e.target === searchModal) {
         closeSearch();
       }
     });
 
-    // 输入事件
     searchInput.addEventListener('input', debounce(performSearch, 200));
-
-    // 加载搜索索引
     buildSearchIndex();
   }
 
-  // 构建搜索索引
   async function buildSearchIndex() {
     try {
-      // 获取页面配置
       const response = await fetch('/config/pages.json');
       const pages = await response.json();
 
-      // 遍历所有页面，加载内容
       for (const [id, page] of Object.entries(pages)) {
         try {
           const contentResponse = await fetch(page.content);
@@ -79,7 +65,6 @@
     }
   }
 
-  // 执行搜索
   function performSearch() {
     const query = searchInput.value.trim().toLowerCase();
 
@@ -92,13 +77,12 @@
       return item.title.toLowerCase().includes(query) ||
              item.description.toLowerCase().includes(query) ||
              item.content.includes(query) ||
-             item.keywords.some(k => k.toLowerCase().includes(query));
+             item.keywords.some(keyword => keyword.toLowerCase().includes(query));
     });
 
     renderResults(results, query);
   }
 
-  // 渲染搜索结果
   function renderResults(results, query) {
     if (results.length === 0) {
       searchResults.innerHTML = `
@@ -107,14 +91,13 @@
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
           </svg>
-          <p>未找到 "${query}" 相关结果</p>
+          <p>未找到与 “${query}” 相关的结果</p>
         </div>
       `;
       return;
     }
 
     searchResults.innerHTML = results.map(item => {
-      // 提取摘要
       const preview = extractPreview(item.content, query);
 
       return `
@@ -126,42 +109,37 @@
     }).join('');
   }
 
-  // 提取预览文本
   function extractPreview(content, query) {
     const index = content.indexOf(query);
     if (index === -1) {
-      return content.substring(0, 100) + '...';
+      return `${content.substring(0, 100)}...`;
     }
 
     const start = Math.max(0, index - 30);
     const end = Math.min(content.length, index + query.length + 70);
     let preview = content.substring(start, end);
 
-    if (start > 0) preview = '...' + preview;
-    if (end < content.length) preview = preview + '...';
+    if (start > 0) preview = `...${preview}`;
+    if (end < content.length) preview = `${preview}...`;
 
     return highlightMatch(preview, query);
   }
 
-  // 高亮匹配文本
   function highlightMatch(text, query) {
     const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-    return text.replace(regex, '<mark style="background: var(--primary-light); color: var(--primary); padding: 0 2px; border-radius: 2px;">$1</mark>');
+    return text.replace(regex, '<mark style="background: rgba(124, 92, 255, 0.25); color: var(--text-primary); padding: 0 3px; border-radius: 4px;">$1</mark>');
   }
 
-  // 转义正则特殊字符
   function escapeRegex(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
-  // 打开搜索
   function openSearch() {
     searchModal.classList.add('active');
     searchInput.focus();
     document.body.style.overflow = 'hidden';
   }
 
-  // 关闭搜索
   function closeSearch() {
     searchModal.classList.remove('active');
     searchInput.value = '';
@@ -169,7 +147,6 @@
     document.body.style.overflow = '';
   }
 
-  // 防抖函数
   function debounce(func, wait) {
     let timeout;
     return function(...args) {
@@ -178,10 +155,8 @@
     };
   }
 
-  // DOM 加载完成后初始化
   document.addEventListener('DOMContentLoaded', initSearch);
 
-  // 导出全局函数
   window.openSearch = openSearch;
   window.closeSearch = closeSearch;
 })();
