@@ -1,0 +1,44 @@
+{
+  "nav": [
+    {
+      "title": "首页",
+      "path": "/",
+      "icon": "home"
+    },
+    {
+      "title": "MDR 设计评审",
+      "path": "/pages/mdr.html",
+      "icon": "design"
+    },
+    {
+      "title": "PDR 原型评审",
+      "path": "/pages/pdr.html",
+      "icon": "prototype"
+    },
+    {
+      "title": "HDR 硬件评审",
+      "path": "/pages/hdr.html",
+      "icon": "hardware"
+    }
+  ],
+  "sidebar": {
+    "mdr": [
+      { "title": "概述", "href": "#overview" },
+      { "title": "评审流程", "href": "#process" },
+      { "title": "检查清单", "href": "#checklist" },
+      { "title": "模板下载", "href": "#templates" }
+    ],
+    "pdr": [
+      { "title": "概述", "href": "#overview" },
+      { "title": "评审流程", "href": "#process" },
+      { "title": "检查清单", "href": "#checklist" },
+      { "title": "模板下载", "href": "#templates" }
+    ],
+    "hdr": [
+      { "title": "概述", "href": "#overview" },
+      { "title": "评审流程", "href": "#process" },
+      { "title": "检查清单", "href": "#checklist" },
+      { "title": "模板下载", "href": "#templates" }
+    ]
+  }
+}

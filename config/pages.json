@@ -1,0 +1,29 @@
+{
+  "mdr": {
+    "id": "mdr",
+    "title": "MDR 设计评审",
+    "description": "Market Design Review - 市场需求设计评审流程",
+    "content": "/content/mdr/overview.md",
+    "icon": "design",
+    "lastUpdated": "2026-07-21",
+    "keywords": ["设计评审", "市场需求", "产品定义", "设计规范"]
+  },
+  "pdr": {
+    "id": "pdr",
+    "title": "PDR 原型评审",
+    "description": "Prototype Design Review - 原型设计评审流程",
+    "content": "/content/pdr/overview.md",
+    "icon": "prototype",
+    "lastUpdated": "2026-07-21",
+    "keywords": ["原型评审", "功能验证", "原型测试", "用户体验"]
+  },
+  "hdr": {
+    "id": "hdr",
+    "title": "HDR 硬件评审",
+    "description": "Hardware Design Review - 硬件设计评审流程",
+    "content": "/content/hdr/overview.md",
+    "icon": "hardware",
+    "lastUpdated": "2026-07-21",
+    "keywords": ["硬件评审", "电路设计", "PCB", "BOM", "硬件测试"]
+  }
+}
