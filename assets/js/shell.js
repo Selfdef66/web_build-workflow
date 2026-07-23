@@ -33,11 +33,7 @@
 
   function logoSvg() {
     return `
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="7" y="7" width="50" height="50" rx="14" fill="#1D75FF"/>
-        <path d="M14 18L47 12L35 31L51 20L28 51L30 34L14 18Z" fill="#FFFFFF"/>
-        <path d="M18 22L36 34" stroke="#D7ECFF" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-      </svg>
+      <img src="/dartcool%20logo.png" alt="" aria-hidden="true">
     `;
   }
 
@@ -51,8 +47,7 @@
         <a class="brand" href="/">
           <span class="brand-mark">${logoSvg()}</span>
           <span class="brand-copy">
-            <span class="brand-title">DartCool</span>
-            <span class="brand-subtitle">工作台</span>
+            <span class="brand-title">DartCool AI</span>
           </span>
         </a>
         <nav class="sidebar-nav">
