@@ -16,8 +16,24 @@ body {
 body {
   font-family: var(--font-sans);
   color: var(--text-primary);
-  background: var(--bg-app);
+  background:
+    linear-gradient(180deg, var(--page-wash), rgba(255, 255, 255, 0)),
+    var(--bg-app);
   overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.46;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.58), transparent 72%);
 }
 
 a {
@@ -33,30 +49,41 @@ button {
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   height: 100vh;
-  background: var(--bg-app);
+  background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  background: var(--bg-sidebar);
+  background:
+    linear-gradient(180deg, var(--surface-wash), rgba(255, 255, 255, 0)),
+    var(--bg-sidebar);
   border-right: 1px solid var(--border-soft);
   min-height: 100vh;
+  box-shadow: 12px 0 34px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(18px);
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 20px 18px 18px;
+  padding: 22px 18px 20px;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .brand-mark {
-  width: 36px;
-  height: 36px;
-  flex: 0 0 36px;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
   display: grid;
   place-items: center;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--control-wash);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
 .brand-mark svg {
@@ -66,8 +93,8 @@ button {
 }
 
 .brand-mark img {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   display: block;
   object-fit: contain;
 }
@@ -78,8 +105,8 @@ button {
 
 .brand-title {
   color: var(--text-primary);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 760;
   line-height: 1.2;
 }
 
@@ -93,8 +120,8 @@ button {
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 4px 10px 12px;
+  gap: 5px;
+  padding: 12px 12px 14px;
   overflow-y: auto;
 }
 
@@ -103,32 +130,56 @@ button {
 }
 
 .nav-label {
-  padding: 0 12px 8px;
+  padding: 0 10px 8px;
   color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 720;
+  line-height: 1.4;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 40px;
-  padding: 0 12px;
-  border-radius: 8px;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 11px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   color: var(--text-secondary);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 540;
+  position: relative;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity 180ms ease;
 }
 
 .nav-item:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
+  transform: translateX(1px);
 }
 
 .nav-item.active {
-  background: var(--bg-active);
+  background: linear-gradient(90deg, var(--bg-active), rgba(255, 255, 255, 0) 140%);
+  border-color: rgba(47, 107, 255, 0.16);
   color: var(--primary-strong);
+  box-shadow: 0 10px 22px rgba(47, 107, 255, 0.08);
+}
+
+.nav-item.active::before {
+  opacity: 1;
 }
 
 .nav-icon {
@@ -143,26 +194,35 @@ button {
   width: 18px;
   height: 18px;
   stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .sidebar-footer {
   margin-top: auto;
-  padding: 12px 14px 16px;
+  padding: 14px 14px 18px;
+  border-top: 1px solid var(--border-soft);
 }
 
 .collapse-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: none;
-  background: transparent;
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--control-bg);
   color: var(--text-secondary);
   cursor: pointer;
   font-size: 13px;
+  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
 }
 
 .collapse-btn:hover {
   color: var(--primary);
+  border-color: var(--border);
+  background: var(--bg-hover);
 }
 
 .main {
@@ -170,6 +230,9 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--page-wash), rgba(255, 255, 255, 0)),
+    transparent;
 }
 
 .topbar {
@@ -181,33 +244,47 @@ button {
   padding: 0 20px;
   border-bottom: 1px solid var(--border-soft);
   background: var(--bg-panel);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.44) inset;
+  backdrop-filter: blur(18px);
 }
 
 .topbar-icon,
 .topbar-pill {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg-panel);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, var(--control-wash), rgba(255, 255, 255, 0)),
+    var(--bg-panel);
   color: var(--text-secondary);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.topbar-icon:hover {
+  color: var(--primary);
+  border-color: rgba(47, 107, 255, 0.34);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(47, 107, 255, 0.1);
 }
 
 .topbar-pill {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 760;
   color: var(--primary);
+  background: var(--primary-soft);
+  border-color: rgba(47, 107, 255, 0.18);
 }
 
 .workspace {
   flex: 1;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 28px;
   overflow: auto;
 }
 
@@ -248,8 +325,9 @@ button {
   display: grid;
   place-items: center;
   color: var(--text-primary);
-  font-size: 36px;
-  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 760;
+  text-align: center;
 }
 
 .sidebar.collapsed {
@@ -283,6 +361,22 @@ button {
 
 .nav-text {
   white-space: nowrap;
+}
+
+[data-theme="dark"] .nav-item {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-item:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .collapse-btn {
+  color: var(--text-secondary);
 }
 
 @media (max-width: 1080px) {
