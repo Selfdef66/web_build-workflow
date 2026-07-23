@@ -1,141 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PDR 原型评审 - 原型设计评审流程">
-  <title>PDR 原型评审 - Workflow Studio</title>
+  <title>产品 PDR - DartCool</title>
+  <meta name="description" content="产品 PDR 占位页">
   <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </head>
-<body>
-  <header class="navbar">
-    <a href="/" class="navbar-brand">
-      <span class="logo">W</span>
-      <span class="brand-copy">
-        <span class="brand-name">Workflow Studio</span>
-        <span class="brand-kicker">Embedded Review</span>
-      </span>
-    </a>
-    <nav>
-      <ul class="navbar-nav" id="mainNav">
-        <li><a href="/" class="nav-link">首页</a></li>
-        <li><a href="/pages/mdr.html" class="nav-link">MDR</a></li>
-        <li><a href="/pages/pdr.html" class="nav-link active">PDR</a></li>
-        <li><a href="/pages/hdr.html" class="nav-link">HDR</a></li>
-      </ul>
-    </nav>
-    <div class="navbar-actions">
-      <button class="search-btn" id="searchBtn" aria-label="搜索">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <span>搜索</span>
-        <kbd>Ctrl K</kbd>
-      </button>
-      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
-        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"></circle>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
-        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-label="菜单">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 12h18M3 6h18M3 18h18"></path>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <main class="main-content">
-    <div class="content-wrapper document-layout">
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">本页目录</h3>
-          <nav>
-            <ul class="sidebar-nav" id="tocNav">
-              <li><a href="#overview" class="sidebar-link">概述</a></li>
-              <li><a href="#process" class="sidebar-link">评审流程</a></li>
-              <li><a href="#checklist" class="sidebar-link">检查清单</a></li>
-              <li><a href="#templates" class="sidebar-link">模板下载</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">其他评审</h3>
-          <nav>
-            <ul class="sidebar-nav">
-              <li><a href="/pages/mdr.html" class="sidebar-link">MDR 设计评审</a></li>
-              <li><a href="/pages/hdr.html" class="sidebar-link">HDR 硬件评审</a></li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-
-      <div>
-        <header class="page-header">
-          <span class="eyebrow">Prototype Design Review</span>
-          <h1 class="page-title">PDR 原型评审</h1>
-          <p class="page-description">把功能原型、测试指标和验证结论组织成可快速扫描的评审资料，降低跨角色沟通成本。</p>
-          <div class="page-meta">
-            <span class="page-meta-item">最后更新 2026-07-21</span>
-            <span class="page-meta-item">版本 1.0.0</span>
-            <span class="page-meta-item">Markdown 文档</span>
-          </div>
-        </header>
-
-        <article class="markdown-content" id="markdown-content">
-          <p style="color: var(--text-muted);">正在加载内容...</p>
-        </article>
-
-        <section class="version-history" id="version-history">
-          <h2 class="card-title" style="margin-bottom: 1rem;">版本历史</h2>
-          <div class="version-timeline" id="versionTimeline"></div>
-        </section>
-
-        <footer class="footer">
-          <div class="footer-actions">
-            <button class="btn btn-ghost" id="exportPdf">导出 PDF</button>
-            <a href="/" class="btn btn-ghost">返回首页</a>
-          </div>
-          <p>© 2026 Workflow Studio</p>
-        </footer>
-      </div>
-    </div>
-  </main>
-
-  <div class="search-modal" id="searchModal">
-    <div class="search-container">
-      <div class="search-input-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <input type="text" class="search-input" id="searchInput" placeholder="搜索评审文档..." autocomplete="off">
-        <button class="btn btn-ghost" onclick="closeSearch()">ESC</button>
-      </div>
-      <div class="search-results" id="searchResults">
-        <div class="search-no-results">输入关键词开始搜索</div>
-      </div>
-    </div>
-  </div>
-
-  <script src="/assets/js/app.js"></script>
-  <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/markdown.js"></script>
-  <script src="/assets/js/search.js"></script>
-  <script src="/assets/js/export.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      loadMarkdownContent('/content/pdr/overview.md');
-      loadVersionHistory('pdr');
-    });
-  </script>
+<body data-page="pdr">
+  <div data-app-root></div>
+  <script src="/assets/js/shell.js"></script>
 </body>
 </html>
